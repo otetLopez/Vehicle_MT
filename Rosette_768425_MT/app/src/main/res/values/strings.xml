@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Rosette_768425_MT</string>
+    <string name="title"><b>Car Rent Service</b></string>
+    <string-array name="cartypes">
+        <item>Please choose a car</item>
+        <item>Subaru</item>
+        <item>Honda</item>
+        <item>Mitsubishi</item>
+        <item>Nissan</item>
+        <item>Dodge</item>
+        <item>Acura</item>
+        <item>Lexus</item>
+        <item>Audi</item>
+    </string-array>
+    <string name="hint">Daily Rent</string>
+    <string name="qdays">How many days you want to rent?</string>
+    <string name="ndays"># Days</string>
+    <string name="dAge">Driver\'s Age</string>
+    <string name="less">Less than 20</string>
+    <string name="between">Between 21 and 60</string>
+    <string name="above">Above 60</string>
 </resources>
