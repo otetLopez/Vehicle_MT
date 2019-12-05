@@ -19,4 +19,11 @@
     <string name="less">Less than 20</string>
     <string name="between">Between 21 and 60</string>
     <string name="above">Above 60</string>
+    <string name="options">Options</string>
+    <string name="gps">GPS</string>
+    <string name="seat">Child Seat</string>
+    <string name="mile">Unlimited millage</string>
+    <string name="amount">Amount</string>
+    <string name="total">Total Payment</string>
+    <string name="detail">VIEW DETAIL</string>
 </resources>
