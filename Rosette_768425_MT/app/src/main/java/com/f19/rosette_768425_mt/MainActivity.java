@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import com.f19.rosette_768425_mt.Constants;
 
@@ -22,6 +26,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setCar();
+
+        Spinner spinner = findViewById(R.id.spinner);
+        final EditText renttxt = findViewById(R.id.edittext);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i != 0 && i <=8)
+                    renttxt.setText(String.valueOf(Constants.price[i]));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         SeekBar seekBar = findViewById(R.id.seekBar);
         final TextView numtxt = findViewById(R.id.numdays);
