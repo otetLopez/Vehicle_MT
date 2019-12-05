@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DDD6BE"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
@@ -11,28 +12,30 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/title"
         android:textColor="#000000"
-        android:textStyle="italic"
         android:textSize="25sp"
-        android:text="@string/title" />
+        android:textStyle="italic" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:entries="@array/cartypes"/>
+        android:entries="@array/cartypes" />
 
     <EditText
         android:id="@+id/edittext"
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:hint="@string/hint"/>
+        android:layout_marginTop="15dp"
+        android:editable="false"
+        android:hint="@string/hint"
+        android:textColorHighlight="#808080"
+        android:textColorLink="#808080" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,13 +48,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/qdays"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
+
         <TextView
             android:id="@+id/numdays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="@string/ndays"/>
+            android:text="@string/ndays"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <SeekBar
@@ -68,32 +72,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/dAge"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <RadioGroup
         android:id="@+id/radiogroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp">
+
         <RadioButton
             android:id="@+id/radioless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/less"
-            android:textColor="#050"/>
+            android:textColor="#050" />
+
         <RadioButton
             android:id="@+id/radiobet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/between"
-            android:textColor="#050"/>
+            android:textColor="#050" />
+
         <RadioButton
             android:id="@+id/radioabove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/above"
-            android:textColor="#050"/>
+            android:textColor="#050" />
     </RadioGroup>
 
     <TextView
@@ -101,37 +108,40 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/options"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <CheckBox
             android:id="@+id/cbox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/gps"
             android:layout_marginRight="10dp"
-            android:textColor="#050"/>
+            android:text="@string/gps"
+            android:textColor="#050" />
+
         <CheckBox
             android:id="@+id/cbox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/seat"
             android:layout_marginRight="10dp"
-            android:textColor="#050"/>
+            android:text="@string/seat"
+            android:textColor="#050" />
+
         <CheckBox
             android:id="@+id/cbox3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mile"
             android:layout_marginRight="10dp"
-            android:textColor="#050"/>
+            android:text="@string/mile"
+            android:textColor="#050" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -143,29 +153,28 @@
             android:id="@+id/amounttxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/amount"
             android:layout_marginRight="100dp"
-            android:textSize="20sp"/>
+            android:text="@string/amount"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/totaltxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/total"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:text="@string/detail"
         android:layout_marginLeft="70dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
+        android:text="@string/detail"
         android:textColor="#a00" />
-
 
 
 </LinearLayout>
