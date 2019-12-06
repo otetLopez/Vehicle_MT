@@ -157,10 +157,10 @@ public class MainActivity extends AppCompatActivity {
 
         /** Get Radio Value */
         if(radio == 1) {
-            price = price + 5;
+            price = price + (5 * numdays);
         }
         else if (radio == 3) {
-            price = price - (price * .10);
+            price = price - 10;
         }
 
         CheckBox check1 = findViewById(R.id.cbox1);
@@ -168,17 +168,17 @@ public class MainActivity extends AppCompatActivity {
         CheckBox check3 = findViewById(R.id.cbox3);
 
         if(check1.isChecked()) {
-            price = price + 5;
+            price = price + (5 * numdays);
             flag1 = true;
         }
 
         if(check2.isChecked()) {
-            price = price + 7;
+            price = price + (7 * numdays);
             flag2 = true;
         }
 
         if(check3.isChecked()) {
-            price = price + 10;
+            price = price + (10 * numdays);
             flag3 = true;
         }
 
