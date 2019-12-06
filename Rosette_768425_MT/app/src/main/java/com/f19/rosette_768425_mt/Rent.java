@@ -1,12 +1,18 @@
 package com.f19.rosette_768425_mt;
 
-public class Rent {
+import static com.f19.rosette_768425_mt.Constants.*;
+
+public class Rent implements java.io.Serializable {
     private Car car;
     private Integer numdays;
     private Integer addons;
     private double amount;
     private double totalpayment;
+    private int user;
 
+    public void setUser(int user) {
+        this.user = user;
+    }
 
     public void setCar(Car car) {
         this.car = car;
@@ -46,5 +52,66 @@ public class Rent {
         addons = 0;
         amount = 0.0;
         totalpayment = 0.0;
+    }
+
+    public Integer getAddons() {
+        return addons;
+    }
+
+//    private Car car;
+//    private Integer numdays;
+//    private Integer addons;
+//    private double amount;
+//    private double totalpayment;
+//    private int user;
+
+    public String toString() {
+        String userDetails = "";
+        switch (user) {
+            case 1: {
+                userDetails = "Customer below 20";
+            }
+                break;
+            case 2: {
+                userDetails = "Customer of safe age between 20 and 60";
+            }
+                break;
+            case 3: {
+                userDetails = "Customer is above 60";
+            }
+            break;
+            default:
+                break;
+        }
+
+        String addonsStr = "Driver has added the following items:\n";
+        boolean flag = false;
+        int added = addons & 1;
+        if(added == 1) {
+            addonsStr += "\t- GPS added\n";
+            flag = true;
+        }
+        added = addons & 2;
+        if(added == 2) {
+            addonsStr += "\t- Child seat added\n";
+            flag = true;
+        }
+        added = addons & 4;
+        if(added == 4) {
+            addonsStr += "\t- Unlimited mileage added\n";
+            flag = true;
+        }
+
+        if(!flag)
+            addonsStr = "";
+
+        return String.format( "Rent Details:\n\n" + "Car Type\t\t\t: " + this.car.getName() + "\n" +
+                "Car Daily Rent Price\t\t\t: " + this.car.getRent() + "\n" +
+                "Total number of rent days\t\t\t: " + this.numdays + "\n" +
+                "Driver's Age\t\t\t: " + userDetails + "\n" +
+                addonsStr +
+                "Total amount tax exclusive\t\t\t: " + String.format("%.2f", this.amount) + "\n" +
+                "Total payment to be made\t\t\t: " + String.format("%.2f",this.totalpayment));
+
     }
 }

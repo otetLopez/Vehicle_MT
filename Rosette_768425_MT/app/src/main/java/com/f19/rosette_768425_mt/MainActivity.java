@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +22,7 @@ import com.f19.rosette_768425_mt.Constants;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 numtxt.setText(String.valueOf(i) + " Days");
                 numdays = i;
+                rentDetails.setNumdays(numdays);
                 updatePrice();
             }
 
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (damount != 0 && dtotal != 0) {
                     Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                    //intent.putExtra("details", rentDetails);
+                    intent.putExtra("details", rentDetails);
                     startActivity(intent);
                 } else {
                     Toast.makeText(MainActivity.this, "Make sure all fields are filled", Toast.LENGTH_SHORT).show();
@@ -148,18 +151,18 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.radioless: {
-                //price = price + 5.0;
-                radio = 1;
+                radio = Constants.CUSTOMER_BELOW_20;
+                rentDetails.setUser(radio);
             }
             break;
             case R.id.radiobet: {
-                //price = price;
-                radio = 2;
+                radio = Constants.CUSTOMER_BETWEEN_20_60;
+                rentDetails.setUser(radio);
             }
             break;
             case R.id.radioabove: {
-                //price = price + (price * .10);
-                radio = 3;
+                radio = Constants.CUSTOMER_ABOVE_60;
+                rentDetails.setUser(radio);
             }
             break;
             default:
@@ -189,19 +192,18 @@ public class MainActivity extends AppCompatActivity {
 
         if(check1.isChecked()) {
             price = price + (5 * numdays);
-            flag1 = true;
-        }
+            rentDetails.setAddons(rentDetails.getAddons() | Constants.ADD_ONS_GPS);
+        } else {  rentDetails.setAddons(rentDetails.getAddons() & 6); } // 110
 
         if(check2.isChecked()) {
             price = price + (7 * numdays);
-            flag2 = true;
-        }
+            rentDetails.setAddons(rentDetails.getAddons() | Constants.ADD_ONS_CHILD_SEAT);
+        } else {  rentDetails.setAddons(rentDetails.getAddons() & 5); } //101
 
         if(check3.isChecked()) {
             price = price + (10 * numdays);
-            flag3 = true;
-        }
-
+            rentDetails.setAddons(rentDetails.getAddons() | Constants.ADD_ONS_UNLI_MILE);
+        } else {  rentDetails.setAddons(rentDetails.getAddons() & 2); } //011
 
         TextView amount = findViewById(R.id.amounttxt);
         TextView total = findViewById(R.id.totaltxt);
@@ -211,6 +213,8 @@ public class MainActivity extends AppCompatActivity {
             damount = price;
             total.setText(String.format("%.2f", (price + (price * .13))));
             dtotal = price + (price * .13);
+            rentDetails.setAmount(damount);
+            rentDetails.setTotalpayment(dtotal);
         } else {
             amount.setText("");
             total.setText("");
@@ -218,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
             total.setHint("Total Payment");
             damount = 0;
             dtotal = 0;
+            rentDetails.setAmount(damount);
+            rentDetails.setTotalpayment(dtotal);
         }
 
     }
