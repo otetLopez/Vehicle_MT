@@ -192,7 +192,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(check1.isChecked()) {
             price = price + (5 * numdays);
+            Log.i("Otet", "setting to" + (rentDetails.getAddons() | Constants.ADD_ONS_GPS));
             rentDetails.setAddons(rentDetails.getAddons() | Constants.ADD_ONS_GPS);
+            Log.i("Otet", "value now " + rentDetails.getAddons());
         } else {  rentDetails.setAddons(rentDetails.getAddons() & 6); } // 110
 
         if(check2.isChecked()) {
@@ -203,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
         if(check3.isChecked()) {
             price = price + (10 * numdays);
             rentDetails.setAddons(rentDetails.getAddons() | Constants.ADD_ONS_UNLI_MILE);
-        } else {  rentDetails.setAddons(rentDetails.getAddons() & 2); } //011
+        } else {  rentDetails.setAddons(rentDetails.getAddons() & 3); } //011
 
         TextView amount = findViewById(R.id.amounttxt);
         TextView total = findViewById(R.id.totaltxt);

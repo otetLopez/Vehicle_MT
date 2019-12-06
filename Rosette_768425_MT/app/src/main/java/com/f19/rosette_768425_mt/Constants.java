@@ -12,7 +12,7 @@ public class Constants {
 
     public final static Integer ADD_ONS_GPS = 1; // 001
     public final static Integer ADD_ONS_CHILD_SEAT = 2; // 010
-    public final static Integer ADD_ONS_UNLI_MILE = 6; // 100
+    public final static Integer ADD_ONS_UNLI_MILE = 4; // 100
 
 
     public static String[] getCar() {

@@ -1,5 +1,7 @@
 package com.f19.rosette_768425_mt;
 
+import android.util.Log;
+
 import static com.f19.rosette_768425_mt.Constants.*;
 
 public class Rent implements java.io.Serializable {
@@ -27,6 +29,7 @@ public class Rent implements java.io.Serializable {
     }
 
     public void setAddons(Integer addons) {
+        Log.i("Otet" , "Addon set to " + addons);
         this.addons = addons;
     }
 
@@ -58,13 +61,6 @@ public class Rent implements java.io.Serializable {
         return addons;
     }
 
-//    private Car car;
-//    private Integer numdays;
-//    private Integer addons;
-//    private double amount;
-//    private double totalpayment;
-//    private int user;
-
     public String toString() {
         String userDetails = "";
         switch (user) {
@@ -86,17 +82,18 @@ public class Rent implements java.io.Serializable {
 
         String addonsStr = "Driver has added the following items:\n";
         boolean flag = false;
-        int added = addons & 1;
+        int added = this.addons & 1;
+        Log.i("Otet", this.addons + " num");
         if(added == 1) {
             addonsStr += "\t- GPS added\n";
             flag = true;
         }
-        added = addons & 2;
+        added = this.addons & 2;
         if(added == 2) {
             addonsStr += "\t- Child seat added\n";
             flag = true;
         }
-        added = addons & 4;
+        added = this.addons & 4;
         if(added == 4) {
             addonsStr += "\t- Unlimited mileage added\n";
             flag = true;
