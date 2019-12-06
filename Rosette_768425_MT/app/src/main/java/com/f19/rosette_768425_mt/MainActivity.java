@@ -45,10 +45,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i != 0 && i <=8) {
-                    renttxt.setText(String.valueOf(Constants.price[i]));
-                    price = Constants.price[i];
-                    carPrice = Constants.price[i];
+                    renttxt.setText(String.valueOf(Constants.price[i-1]));
+                    carPrice = Constants.price[i-1];
                     updatePrice();
+                } else if(i == 0) {
+                    renttxt.setText("");
+                    renttxt.setHint("Daily Rent");
+                    carPrice = 0.0;
                 }
             }
 
@@ -168,40 +171,29 @@ public class MainActivity extends AppCompatActivity {
             price = price + 5;
             flag1 = true;
         }
-//        else {
-//            if (flag1 == true) {
-//                price = price - 5;
-//                flag1 = false;
-//            }
-//        }
 
         if(check2.isChecked()) {
             price = price + 7;
             flag2 = true;
         }
-//        else {
-//            if (flag2 == true) {
-//                price = price - 7;
-//                flag2 = false;
-//            }
-//        }
+
         if(check3.isChecked()) {
             price = price + 10;
             flag3 = true;
         }
-//        else {
-//            if (flag3 == true) {
-//                price = price - 10;
-//                flag3 = false;
-//            }
-//        }
+
 
         TextView amount = findViewById(R.id.amounttxt);
         TextView total = findViewById(R.id.totaltxt);
 
         if (price != 0 && radio > 0) {
-            amount.setText(String.valueOf(price));
-            total.setText(String.valueOf(price + (price * .13)));
+            amount.setText(String.format("%.2f", price));
+            total.setText(String.format("%.2f", (price + (price * .13))));
+        } else {
+            amount.setText("");
+            total.setText("");
+            amount.setHint("Amount");
+            total.setHint("Total Payment");
         }
 
     }
