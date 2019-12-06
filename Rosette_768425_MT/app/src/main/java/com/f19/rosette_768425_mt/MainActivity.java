@@ -52,12 +52,15 @@ public class MainActivity extends AppCompatActivity {
                 if(i != 0 && i <=8) {
                     renttxt.setText(String.valueOf(Constants.price[i-1]));
                     carPrice = Constants.price[i-1];
-                    updatePrice();
+                    Car car = new Car(Constants.car[i-1],Constants.price[i-1]);
+                    rentDetails.setCar(car);
                 } else if(i == 0) {
                     renttxt.setText("");
+                    rentDetails.removeCar();
                     renttxt.setHint("Daily Rent");
                     carPrice = 0.0;
                 }
+                updatePrice();
             }
 
             @Override
