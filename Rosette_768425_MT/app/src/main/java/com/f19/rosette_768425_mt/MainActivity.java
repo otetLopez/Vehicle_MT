@@ -2,10 +2,12 @@ package com.f19.rosette_768425_mt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -13,6 +15,8 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.f19.rosette_768425_mt.Constants;
 
 import org.w3c.dom.Text;
@@ -25,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
     Integer radio = -1;
     double carPrice = 0.0;
     double price = 0.0;
-    double total = 0.0;
-    double amount = 0.0;
+    double dtotal = 0.0;
+    double damount = 0.0;
     boolean flag1 = false;
     boolean flag2 = false;
     boolean flag3 = false;
+    Rent rentDetails = new Rent();
     ArrayList<Car> carList = new ArrayList<Car>();
 
     @Override
@@ -107,7 +112,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        updatePrice();
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (damount != 0 && dtotal != 0) {
+                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                    //intent.putExtra("details", rentDetails);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Make sure all fields are filled", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void setCar() {
@@ -188,12 +205,16 @@ public class MainActivity extends AppCompatActivity {
 
         if (price != 0 && radio > 0) {
             amount.setText(String.format("%.2f", price));
+            damount = price;
             total.setText(String.format("%.2f", (price + (price * .13))));
+            dtotal = price + (price * .13);
         } else {
             amount.setText("");
             total.setText("");
             amount.setHint("Amount");
             total.setHint("Total Payment");
+            damount = 0;
+            dtotal = 0;
         }
 
     }
